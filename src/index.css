@@ -1,0 +1,14 @@
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg,rgba(2, 0, 36, 1) 16%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 96%);
+    color: white;
+}
