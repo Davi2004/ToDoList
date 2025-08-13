@@ -3,12 +3,15 @@
     border: 2px solid black;
     border-radius: 18px;
     padding: 50px;
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
+    margin: 50px;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 25px;
+    font-size: 2rem;
 }
 
 .input-container {
@@ -16,6 +19,7 @@ h1 {
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .input-container input {
@@ -24,6 +28,7 @@ h1 {
     border-radius: 8px;
     height: 30px;
     padding: 0 8px;
+    font-size: 1rem;
 }
 
 .buttonregister {
@@ -32,22 +37,12 @@ h1 {
     height: 30px;
     cursor: pointer;
     white-space: nowrap;
-    padding: 0 10px;    
-}
-
-.button {
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;    
-}
-
-span {
-    font-size: 14px;
+    padding: 0 10px;
+    font-size: 0.9rem;  
 }
 
 section {
     margin-bottom: 5px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,14 +55,38 @@ section {
     flex: 1;
 }
 
+.button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;    
+}
+
 /* Responsividade: */
 
 @media (max-width: 768px) {
     .container {
         width: 450px;
+        margin: 0;
+        padding: 20px;
     }
 
-    span {
-        font-size: 12px;
-    }    
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .input-container {
+        gap: 8px;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 320px;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
 }
