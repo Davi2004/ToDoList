@@ -5,20 +5,22 @@ import './App.css'
 export default function App() {
   const [input, setInput] = useState("");
   
-  const [tasks, setTasks] = useState<string[]>(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    return storedTasks ? JSON.parse(storedTasks) : [];
-  });
+  const [tasks, setTasks] = useState<string[]>([]);
 
   const [editTask, setEditTask] = useState({
     enabled: false,
     task: ""
   });
 
-  // Salva sempre que a lista de tarefas mudar
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+  useEffect( () => {
+
+    const tarefasSalvas = localStorage.getItem("@tarefasTask")
+
+    if(tarefasSalvas) {
+      setTasks(JSON.parse(tarefasSalvas)); // Pega as tarefas salvas no LocalStorage e converte em um array de string.
+    }
+    
+  }, [])
   
   function handleRegister() {
     if(!input) {
@@ -33,6 +35,8 @@ export default function App() {
 
     setTasks([...tasks, input]);
     setInput("");
+
+    localStorage.setItem("@tarefasTask", JSON.stringify([...tasks, input])); // Salva as tarefas no LocalStorage.
     
   }
 
@@ -49,11 +53,17 @@ export default function App() {
     })
     
     setInput("");
+
+    localStorage.setItem("@tarefasTask", JSON.stringify(alltask)); // Salva as tarefas no LocalStorage.
+    
   }
 
   function handleDelete(item: string) {
     const removeTask = tasks.filter( task => task !== item )
     setTasks(removeTask)
+
+    localStorage.setItem("@tarefasTask", JSON.stringify(removeTask)); // Salva as tarefas caso o usuário exclua alguma.
+
   }
 
   function handleEdit(item: string) {
