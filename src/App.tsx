@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Pencil, Trash2 } from 'lucide-react';
 import './App.css' 
 
 export default function App() {
+
+  const inputRef = useRef<HTMLInputElement>(null)
+  
   const [input, setInput] = useState("");
   
   const [tasks, setTasks] = useState<string[]>([]);
@@ -68,10 +71,14 @@ export default function App() {
 
   function handleEdit(item: string) {
     setInput(item); // Preenche o campo do input com a tarefa desejada.
+    
     setEditTask({
       enabled: true,
       task: item
     })
+
+    inputRef.current?.focus(); // Foca no input para o usuário editar a tarefa.
+
   }
   
   return (
@@ -86,6 +93,7 @@ export default function App() {
           placeholder='Digite uma tarefa...'
           value={input}
           onChange={ (e) => setInput(e.target.value) }
+          ref={inputRef}
         />
         
         <button onClick={handleRegister} className='buttonregister'>
