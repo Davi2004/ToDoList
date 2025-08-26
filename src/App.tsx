@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { Pencil, Trash2 } from 'lucide-react';
-import './App.css' 
+import './App.css'
+import {toast} from 'react-hot-toast';
 
 export default function App() {
 
@@ -27,7 +28,12 @@ export default function App() {
   
   function handleRegister() {
     if(!input) {
-      alert("Preencha o nome da sua tarefa!")
+      toast.error("O campo precisa ser preenchido!!", {
+        duration: 2000,
+        style: {
+          marginRight: '0',
+        }
+      })
       return;
     }
 
