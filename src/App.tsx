@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { Pencil, Trash2 } from 'lucide-react';
 import './App.css' 
 
@@ -80,11 +80,19 @@ export default function App() {
     inputRef.current?.focus(); // Foca no input para o usuário editar a tarefa.
 
   }
+
+  const totalTarefas = useMemo( () => {
+    return tasks.length;
+  }, [tasks] )
   
   return (
     <main className='container'>
       
       <h1> ToDoList </h1>
+
+      <strong>
+        Você {totalTarefas === 0 ? "não tem" : "tem"} {totalTarefas === 0 ? "" : totalTarefas} {totalTarefas === 1 ? "tarefa" : "tarefas"} {totalTarefas === 1 ? "salva" : "salvas"}
+      </strong>
 
       <div className='input-container'>
         
