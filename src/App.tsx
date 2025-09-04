@@ -46,6 +46,12 @@ export default function App() {
     setInput("");
 
     localStorage.setItem("@tarefasTask", JSON.stringify([...tasks, input])); // Salva as tarefas no LocalStorage.
+    toast.success("Tarefa adicionada com sucesso!", {
+      duration: 2000,
+      style: {
+        marginRight: '0',
+      }
+    })
     
   }
 
@@ -64,7 +70,12 @@ export default function App() {
     setInput("");
 
     localStorage.setItem("@tarefasTask", JSON.stringify(alltask)); // Salva as tarefas no LocalStorage.
-    
+    toast.success("Tarefa editada com sucesso!", {
+      duration: 2000,
+      style: {
+        marginRight: '0',
+      }
+    })
   }
 
   function handleDelete(item: string) {
@@ -72,7 +83,12 @@ export default function App() {
     setTasks(removeTask)
 
     localStorage.setItem("@tarefasTask", JSON.stringify(removeTask)); // Salva as tarefas caso o usuário exclua alguma.
-
+    toast.success("Tarefa removida com sucesso!", {
+      duration: 2000,
+      style: {
+        marginRight: '0',
+      }
+    })
   }
 
   function handleEdit(item: string) {
@@ -84,7 +100,6 @@ export default function App() {
     })
 
     inputRef.current?.focus(); // Foca no input para o usuário editar a tarefa.
-
   }
 
   const totalTarefas = useMemo( () => {
